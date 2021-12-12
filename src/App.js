@@ -10,7 +10,12 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 firebase.initializeApp({
-  // your config
+  apiKey: "AIzaSyDTbbfsoZqb_F58LsviYMvQgRtXqH46oK4",
+  authDomain: "lerngruppen-chat.firebaseapp.com",
+  projectId: "lerngruppen-chat",
+  storageBucket: "lerngruppen-chat.appspot.com",
+  messagingSenderId: "1031974884380",
+  appId: "1:1031974884380:web:3060ec002729ef6d38bbd9"
 })
 
 const auth = firebase.auth();
@@ -25,7 +30,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>⚛️🔥💬</h1>
+        <h1>Lerngruppen Chat</h1>
         <SignOut />
       </header>
 
@@ -46,7 +51,7 @@ function SignIn() {
 
   return (
     <>
-      <button className="sign-in" onClick={signInWithGoogle}>Sign in with Google</button>
+      <button className="sign-in" onClick={signInWithGoogle}>Mit Google anmelden</button>
       <p>Do not violate the community guidelines or you will be banned for life!</p>
     </>
   )
@@ -55,7 +60,7 @@ function SignIn() {
 
 function SignOut() {
   return auth.currentUser && (
-    <button className="sign-out" onClick={() => auth.signOut()}>Sign Out</button>
+    <button className="sign-out" onClick={() => auth.signOut()}>Abmelden</button>
   )
 }
 
@@ -97,9 +102,9 @@ function ChatRoom() {
 
     <form onSubmit={sendMessage}>
 
-      <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="say something nice" />
+      <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="..." />
 
-      <button type="submit" disabled={!formValue}>🕊️</button>
+      <button type="submit" disabled={!formValue}>➡️</button>
 
     </form>
   </>)
@@ -113,7 +118,7 @@ function ChatMessage(props) {
 
   return (<>
     <div className={`message ${messageClass}`}>
-      <img src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} />
+      <img src={photoURL || 'https://www.sga-volleyball.de/wp-content/uploads/2014/09/dummy-user.jpg'} />
       <p>{text}</p>
     </div>
   </>)
